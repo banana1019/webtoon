@@ -1,0 +1,23 @@
+{% load static %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'bootstrap.min.css' %}"
+/>
+<div>
+  <a
+    class="btn btn-primary"
+    href="{% url 'webtoon:index' %}"
+    style="position: fixed"
+  >
+    <span>목록</span>
+  </a>
+  <h1 style="text-align: center; font-size: 2rem">{{ episode.title }}</h1>
+</div>
+<div style="text-align: center">
+  {% for item in episode_detail_page %}
+  <p style="margin: 0">
+    <img src="{{ item.image_url }}" />
+  </p>
+  {% endfor %}
+</div>

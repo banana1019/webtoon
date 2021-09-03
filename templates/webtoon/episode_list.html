@@ -1,0 +1,43 @@
+{% load static %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'bootstrap.min.css' %}"
+/>
+<div style="text-align: center; margin: 1rem">
+  <h1>호랑이형님</h1>
+</div>
+<div class="container my-3">
+  <table class="table">
+    <thead>
+      <tr class="thead-dark">
+        <th>이미지</th>
+        <th>제목</th>
+        <th>등록일</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if episode_list %} {% for episode in episode_list %}
+      <tr>
+        <td>
+          <img
+            src="{{ episode.thumbnail }}"
+            width="76px"
+            alt="{{ episode.title }}"
+          />
+        </td>
+        <td>
+          <a href="{% url 'webtoon:detail' episode.id %}"
+            >{{ episode.title }}</a
+          >
+        </td>
+        <td>{{ episode.date|date:'Y-m-d' }}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="3">크롤링을 먼저 실행해 주세요.</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
