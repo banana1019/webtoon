@@ -14,7 +14,28 @@ git clone https://github.com/banana1019/webtoon.git
 pip install -r requirements.txt
 ```
 
-3. DB를 생성해 주세요.
+3. my_settings.py 파일 수정 후 migrate 진행해 주세요.
+
+DB는 MySQL을 사용했으며 DB NAME은 "specter" 입니다. 
+my_settings.py 에서 DATABASES 부분을 본인 PASSWORD로 변경해 주세요.
+
+```
+# my_settings.py
+SECRET_KEY = "django-insecure-hn89f1pcy$438t96i)0-!3^ftw9hfpd%l=qia4i^@ef*)m*!ns"
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "specter",
+        "USER": "root",
+        "PASSWORD": "본인 것으로 변경",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
+    }
+}
+```
+
+my_settings.py 파일 수정이 완료되었으면 migrate를 진행해 주세요.
 
 ```
 python manage.py migrate
